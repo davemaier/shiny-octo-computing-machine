@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { SubscriptionsActionType, useSubscriptions, } from "../SubstricptionsProvider";
+import { SubscriptionsActionType, useSubscriptions, } from "../SubscriptionsProvider";
 export function useStups(event, cb, name) {
     const { dispatch, status } = useSubscriptions();
     useEffect(() => {

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import {
   SubscriptionsActionType,
   useSubscriptions,
-} from "../SubstricptionsProvider";
+} from "../SubscriptionsProvider";
 
 export function useStups(event: string, cb: Function, name?: string) {
   const { dispatch, status } = useSubscriptions();
