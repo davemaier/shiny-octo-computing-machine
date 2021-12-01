@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "outDir": "build",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext",
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "declaration": true
+  }
+}
