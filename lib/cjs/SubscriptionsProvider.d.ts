@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from "react";
 interface Subscription {
     event: string;
     cb: Function;

@@ -7,6 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
+import React from "react";
 
 import { useOnlineStatus } from "./hooks/useOnlineStatus";
 
