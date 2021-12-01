@@ -9,8 +9,6 @@ import {
 } from "react";
 import React from "react";
 
-import { useOnlineStatus } from "./hooks/useOnlineStatus";
-
 interface Subscription {
   event: string;
   cb: Function;
@@ -104,8 +102,6 @@ export function SubscriptionsProvider({
     SubscriptionsStatus.CLOSED
   );
 
-  const isOnline = useOnlineStatus();
-
   const connect = useCallback(() => {
     ws.current = new WebSocket(endpointUrl);
     setStatus(ws.current.readyState);
@@ -136,14 +132,13 @@ export function SubscriptionsProvider({
 
   useEffect(() => {
     if (
-      isOnline &&
       status === SubscriptionsStatus.CLOSED &&
       token !== "" &&
       token !== "Bearer undefined"
     ) {
       connect();
     }
-  }, [isOnline, status, token, connect]);
+  }, [status, token, connect]);
 
   useEffect(() => {
     if (!ws.current) return;
