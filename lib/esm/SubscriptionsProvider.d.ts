@@ -26,9 +26,10 @@ interface SubscriptionsContextValues {
     status: SubscriptionsStatus;
 }
 export declare function useSubscriptions(): SubscriptionsContextValues;
-interface SubscriptionsProviderProps {
+export interface SubscriptionsProviderProps {
+    token: string;
     endpointUrl: string;
     children: React.ReactNode;
 }
-export declare function SubscriptionsProvider({ children, endpointUrl, }: SubscriptionsProviderProps): JSX.Element;
+export declare function SubscriptionsProvider({ children, endpointUrl, token, }: SubscriptionsProviderProps): JSX.Element;
 export {};
