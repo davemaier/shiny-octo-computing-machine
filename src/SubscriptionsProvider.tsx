@@ -82,7 +82,8 @@ export function useSubscriptions() {
   return context;
 }
 
-interface SubscriptionsProviderProps {
+export interface SubscriptionsProviderProps {
+  token: string;
   endpointUrl: string;
   children: React.ReactNode;
 }
@@ -90,12 +91,11 @@ interface SubscriptionsProviderProps {
 export function SubscriptionsProvider({
   children,
   endpointUrl,
+  token,
 }: SubscriptionsProviderProps) {
   const [state, dispatch] = useReducer(subscriptionsReducer, {
     subscriptions: [],
   });
-
-  const [token, setToken] = useState("");
 
   const ws = useRef<WebSocket>();
   const [status, setStatus] = useState<SubscriptionsStatus>(
@@ -115,20 +115,6 @@ export function SubscriptionsProvider({
       setStatus(ws.current?.readyState ?? SubscriptionsStatus.CLOSED);
     };
   }, [token]);
-
-  useEffect(() => {
-    (async () => {
-      const token = (
-        (await (await fetch("/api/auth/token")).json()) as {
-          accessToken?: string;
-        }
-      ).accessToken;
-
-      if (token) {
-        setToken(`Bearer ${token}`);
-      }
-    })();
-  }, []);
 
   useEffect(() => {
     if (
